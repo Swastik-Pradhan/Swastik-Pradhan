@@ -1,43 +1,11 @@
 
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Text } from '@react-three/drei';
-import { useRef } from 'react';
-import { useFrame } from '@react-three/fiber';
+import { useRef, useEffect, useState } from 'react';
 
-interface TechOrbProps {
-  position: [number, number, number];
+interface Technology {
   name: string;
+  position: [number, number, number];
   color: string;
 }
-
-const TechOrb = ({ position, name, color }: TechOrbProps) => {
-  const meshRef = useRef<any>();
-
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x += 0.01;
-      meshRef.current.rotation.y += 0.01;
-    }
-  });
-
-  return (
-    <group position={position}>
-      <mesh ref={meshRef}>
-        <sphereGeometry args={[0.5, 32, 32]} />
-        <meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.2} />
-      </mesh>
-      <Text
-        position={[0, -1, 0]}
-        fontSize={0.3}
-        color="#00f5ff"
-        anchorX="center"
-        anchorY="middle"
-      >
-        {name}
-      </Text>
-    </group>
-  );
-};
 
 const TechStackSection = () => {
   const technologies = [
@@ -49,44 +17,95 @@ const TechStackSection = () => {
     { name: 'MongoDB', position: [0, 0, -2] as [number, number, number], color: '#47a248' },
   ];
 
+  // Animation for tech cards
+  const [hoveredTech, setHoveredTech] = useState<string | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Subtle animation for the tech cards when not being hovered
+      if (containerRef.current) {
+        const cards = containerRef.current.querySelectorAll('.tech-card');
+        cards.forEach((card, index) => {
+          if (card instanceof HTMLElement && card.dataset.name !== hoveredTech) {
+            const time = Date.now() * 0.001 + index * 0.5;
+            const scale = 1 + Math.sin(time) * 0.03;
+            card.style.transform = `scale(${scale})`;
+          }
+        });
+      }
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, [hoveredTech]);
+
   return (
-    <section className="py-20 px-4">
+    <section className="py-20 px-4 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 glow-text">
           Tech <span className="text-neon-blue">Stack</span>
         </h2>
         
-        <div className="h-96 mb-12">
-          <Canvas camera={{ position: [0, 0, 5] }}>
-            <ambientLight intensity={0.5} />
-            <pointLight position={[10, 10, 10]} />
-            <pointLight position={[-10, -10, -10]} color="#8b5cf6" />
-            
+        <div className="h-auto mb-12">
+          <div className="tech-orbit-container flex flex-wrap justify-center items-center gap-8 mb-16">
             {technologies.map((tech, index) => (
-              <TechOrb
-                key={index}
-                position={tech.position}
-                name={tech.name}
-                color={tech.color}
-              />
+              <div 
+                key={index} 
+                className="tech-orbit relative"
+                style={{
+                  animationDelay: `${index * 0.5}s`
+                }}
+              >
+                <div 
+                  className="w-24 h-24 rounded-full flex items-center justify-center bg-card/50 backdrop-blur-md border-2 hover:border-neon-blue hover:shadow-lg hover:shadow-neon-blue/20 transition-all duration-300 transform hover:scale-110"
+                  style={{
+                    borderColor: tech.color,
+                    boxShadow: `0 0 15px ${tech.color}40`
+                  }}
+                >
+                  <div
+                    className="w-16 h-16 rounded-full"
+                    style={{ 
+                      backgroundColor: tech.color,
+                      boxShadow: `0 0 15px ${tech.color}80`
+                    }}
+                  />
+                </div>
+                <p className="text-center mt-3 text-neon-blue font-semibold">{tech.name}</p>
+              </div>
             ))}
-            
-            <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={2} />
-          </Canvas>
+          </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div 
+          ref={containerRef}
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6"
+        >
           {technologies.map((tech, index) => (
-            <div key={index} className="tech-card text-center">
+            <div 
+              key={index} 
+              data-name={tech.name}
+              className="tech-card text-center"
+              onMouseEnter={() => setHoveredTech(tech.name)}
+              onMouseLeave={() => setHoveredTech(null)}
+            >
               <div 
-                className="w-12 h-12 rounded-full mx-auto mb-3"
-                style={{ backgroundColor: tech.color }}
+                className="w-12 h-12 rounded-full mx-auto mb-3 transition-transform duration-500"
+                style={{ 
+                  backgroundColor: tech.color,
+                  boxShadow: hoveredTech === tech.name ? `0 0 15px ${tech.color}` : 'none',
+                  transform: hoveredTech === tech.name ? 'scale(1.2)' : 'scale(1)'
+                }}
               ></div>
               <h3 className="font-semibold text-neon-blue">{tech.name}</h3>
             </div>
           ))}
         </div>
       </div>
+      
+      {/* Background glow effects */}
+      <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-neon-blue/5 rounded-full blur-3xl"></div>
+      <div className="absolute -top-32 -right-32 w-64 h-64 bg-neon-purple/5 rounded-full blur-3xl"></div>
     </section>
   );
 };

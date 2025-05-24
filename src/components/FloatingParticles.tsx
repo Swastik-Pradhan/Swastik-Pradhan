@@ -35,13 +35,24 @@ const FloatingParticles = () => {
 
     const animateParticles = () => {
       setParticles(prevParticles =>
-        prevParticles.map(particle => ({
-          ...particle,
-          x: particle.x + particle.speedX,
-          y: particle.y + particle.speedY,
-          x: particle.x > window.innerWidth ? 0 : particle.x < 0 ? window.innerWidth : particle.x,
-          y: particle.y > window.innerHeight ? 0 : particle.y < 0 ? window.innerHeight : particle.y,
-        }))
+        prevParticles.map(particle => {
+          // Calculate new positions
+          let newX = particle.x + particle.speedX;
+          let newY = particle.y + particle.speedY;
+          
+          // Handle wrap-around
+          if (newX > window.innerWidth) newX = 0;
+          else if (newX < 0) newX = window.innerWidth;
+          
+          if (newY > window.innerHeight) newY = 0;
+          else if (newY < 0) newY = window.innerHeight;
+          
+          return {
+            ...particle,
+            x: newX,
+            y: newY
+          };
+        })
       );
     };
 
