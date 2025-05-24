@@ -5,16 +5,28 @@ import TechStackSection from '@/components/TechStackSection';
 import ProjectsSection from '@/components/ProjectsSection';
 import ContactSection from '@/components/ContactSection';
 import FloatingParticles from '@/components/FloatingParticles';
+import FloatingNav from '@/components/FloatingNav';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <FloatingParticles />
-      <HeroSection />
-      <AboutSection />
-      <TechStackSection />
-      <ProjectsSection />
-      <ContactSection />
+      <FloatingNav />
+      <section id="home">
+        <HeroSection />
+      </section>
+      <section id="about">
+        <AboutSection />
+      </section>
+      <section id="tech">
+        <TechStackSection />
+      </section>
+      <section id="projects">
+        <ProjectsSection />
+      </section>
+      <section id="contact">
+        <ContactSection />
+      </section>
     </div>
   );
 };
