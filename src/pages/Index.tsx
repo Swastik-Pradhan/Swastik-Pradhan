@@ -6,12 +6,14 @@ import ProjectsSection from '@/components/ProjectsSection';
 import ContactSection from '@/components/ContactSection';
 import FloatingParticles from '@/components/FloatingParticles';
 import FloatingNav from '@/components/FloatingNav';
+import FloatingSphereNav from '@/components/FloatingSphereNav';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <FloatingParticles />
       <FloatingNav />
+      <FloatingSphereNav />
       <section id="home">
         <HeroSection />
       </section>
