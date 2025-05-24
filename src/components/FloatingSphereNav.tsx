@@ -1,6 +1,6 @@
 
 import { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useDragControls } from 'framer-motion';
 import { 
   Home, 
   User, 
@@ -27,7 +27,9 @@ interface NavItem {
 const FloatingSphereNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [position, setPosition] = useState({ x: 0, y: 0 });
   const menuRef = useRef<HTMLDivElement>(null);
+  const dragControls = useDragControls();
 
   const navItems: NavItem[] = [
     { name: 'Home', icon: <Home className="h-5 w-5" />, href: '#home', color: '#00f5ff' },
@@ -77,19 +79,38 @@ const FloatingSphereNav = () => {
     };
   }, []);
 
-  // Calculate positions for the radial menu items
-  const getRadialPosition = (index: number, total: number, radius: number) => {
-    const angle = (index / total) * Math.PI * 2 - Math.PI / 2;
+  // Calculate positions for the semicircle menu items
+  const getSemicirclePosition = (index: number, total: number, radius: number) => {
+    // Calculate angle in the semicircle (180 degrees / PI radians)
+    // Starting from the right (0 degrees) to the left (180 degrees)
+    const angle = (index / (total - 1)) * Math.PI;
     return {
       x: Math.cos(angle) * radius,
-      y: Math.sin(angle) * radius,
+      y: -Math.sin(angle) * radius, // Negative to go upward
     };
   };
 
+  function startDrag(event: React.PointerEvent) {
+    dragControls.start(event);
+  }
+
   return (
-    <div 
+    <motion.div 
       ref={menuRef}
-      className="fixed bottom-12 left-12 z-50 flex items-center justify-center"
+      className="fixed right-8 bottom-8 z-50 flex items-center justify-center"
+      drag
+      dragControls={dragControls}
+      dragMomentum={false}
+      dragElastic={0.1}
+      dragTransition={{ bounceStiffness: 300, bounceDamping: 20 }}
+      whileDrag={{ scale: 1.1 }}
+      animate={{ x: position.x, y: position.y }}
+      onDragEnd={(_, info) => {
+        setPosition({
+          x: position.x + info.offset.x,
+          y: position.y + info.offset.y
+        });
+      }}
     >
       <AnimatePresence>
         {isOpen && (
@@ -102,13 +123,13 @@ const FloatingSphereNav = () => {
         )}
       </AnimatePresence>
 
-      {/* Radial menu items */}
+      {/* Semicircle menu items */}
       <AnimatePresence>
         {isOpen && navItems.map((item, index) => {
-          const position = getRadialPosition(
+          const position = getSemicirclePosition(
             index,
             navItems.length,
-            120 // Radius of the circle
+            120 // Radius of the semicircle
           );
           
           return (
@@ -148,7 +169,7 @@ const FloatingSphereNav = () => {
                     <a
                       href={item.href}
                       className={`flex items-center justify-center rounded-full p-3
-                                w-12 h-12 bg-black/50 backdrop-blur-md
+                                w-12 h-12 bg-black/30 backdrop-blur-md
                                 border-2 transition-all duration-300
                                 ${activeSection === item.href.substring(1) 
                                   ? `border-[${item.color}] shadow-lg shadow-[${item.color}]/30`
@@ -171,7 +192,7 @@ const FloatingSphereNav = () => {
                     </a>
                   </motion.div>
                 </TooltipTrigger>
-                <TooltipContent side="right">
+                <TooltipContent side="top">
                   <p>{item.name}</p>
                 </TooltipContent>
               </Tooltip>
@@ -195,7 +216,7 @@ const FloatingSphereNav = () => {
           >
             <button
               onClick={() => setIsOpen(false)}
-              className="bg-black/70 text-white rounded-full p-1
+              className="bg-black/50 text-white rounded-full p-1
                         border border-gray-700 shadow-lg"
             >
               <X className="h-4 w-4" />
@@ -204,12 +225,18 @@ const FloatingSphereNav = () => {
         )}
       </AnimatePresence>
 
+      {/* Handle for dragging */}
+      <motion.div
+        className="absolute inset-0 cursor-move"
+        onPointerDown={startDrag}
+      />
+
       {/* Main sphere button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         className={`relative rounded-full overflow-hidden
-                  ${isOpen ? 'bg-black/70' : 'bg-black/40'} 
-                  backdrop-blur-md border-2 border-neon-blue/30
+                  ${isOpen ? 'bg-black/50' : 'bg-black/25'} 
+                  backdrop-blur-md border-2 border-neon-blue/20
                   flex items-center justify-center
                   w-14 h-14 z-10`}
         whileHover={{ 
@@ -219,8 +246,8 @@ const FloatingSphereNav = () => {
         whileTap={{ scale: 0.95 }}
         animate={{ 
           boxShadow: isOpen 
-            ? '0 0 30px rgba(0, 245, 255, 0.8)' 
-            : '0 0 15px rgba(0, 245, 255, 0.3)'
+            ? '0 0 30px rgba(0, 245, 255, 0.6)' 
+            : '0 0 15px rgba(0, 245, 255, 0.2)'
         }}
         transition={{ 
           type: 'spring',
@@ -231,11 +258,11 @@ const FloatingSphereNav = () => {
         {/* Inner sphere content */}
         <div className="relative w-10 h-10 rounded-full overflow-hidden">
           {/* Animated gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/80 via-neon-purple/50 to-neon-green/60 opacity-90 animate-rotate-slow" />
+          <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/60 via-neon-purple/40 to-neon-green/40 opacity-70 animate-rotate-slow" />
           
           {/* Glowing center */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-6 h-6 rounded-full bg-white/30 backdrop-blur-sm animate-pulse" />
+            <div className="w-6 h-6 rounded-full bg-white/20 backdrop-blur-sm animate-pulse" />
           </div>
         </div>
 
@@ -244,7 +271,7 @@ const FloatingSphereNav = () => {
           {[...Array(3)].map((_, i) => (
             <div 
               key={i}
-              className="absolute w-1.5 h-1.5 rounded-full bg-neon-blue animate-orbit"
+              className="absolute w-1.5 h-1.5 rounded-full bg-neon-blue/80 animate-orbit"
               style={{
                 animationDelay: `${i * 0.7}s`,
                 left: '50%',
@@ -255,7 +282,7 @@ const FloatingSphereNav = () => {
           ))}
         </div>
       </motion.button>
-    </div>
+    </motion.div>
   );
 };
 
