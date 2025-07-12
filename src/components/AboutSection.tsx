@@ -1,3 +1,4 @@
+import InteractiveGlobe from './InteractiveGlobe';
 
 const AboutSection = () => {
   return (
@@ -33,14 +34,7 @@ const AboutSection = () => {
         
         <div className="relative">
           <div className="w-80 h-80 mx-auto relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full opacity-20 animate-rotate-slow"></div>
-            <div className="absolute inset-4 bg-background rounded-full flex items-center justify-center border-2 border-neon-blue/30">
-              <div className="text-center">
-                <div className="w-32 h-32 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full mx-auto mb-4 animate-glow-pulse"></div>
-                <h3 className="text-xl font-bold text-neon-blue">Developer</h3>
-                <p className="text-sm text-gray-400">& Data Analyst</p>
-              </div>
-            </div>
+            <InteractiveGlobe />
           </div>
         </div>
       </div>
