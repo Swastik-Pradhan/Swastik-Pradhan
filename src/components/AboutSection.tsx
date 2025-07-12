@@ -1,4 +1,4 @@
-import InteractiveGlobe from './InteractiveGlobe';
+import EarthGlobe from './EarthGlobe';
 
 const AboutSection = () => {
   return (
@@ -33,8 +33,8 @@ const AboutSection = () => {
         </div>
         
         <div className="relative">
-          <div className="w-80 h-80 mx-auto relative">
-            <InteractiveGlobe />
+          <div className="w-full h-80 mx-auto">
+            <EarthGlobe />
           </div>
         </div>
       </div>
