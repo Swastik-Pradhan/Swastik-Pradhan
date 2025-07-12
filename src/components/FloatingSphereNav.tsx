@@ -1,6 +1,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useDragControls } from 'framer-motion';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { 
   Home, 
   User, 
@@ -8,7 +9,8 @@ import {
   FolderOpen, 
   Globe, 
   MessageSquare, 
-  X 
+  X,
+  Settings
 } from 'lucide-react';
 import {
   Tooltip,
@@ -16,29 +18,34 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useNavigation } from '@/contexts/NavigationContext';
 
 interface NavItem {
   name: string;
   icon: React.ReactNode;
-  href: string;
+  path: string;
   color: string;
 }
 
 const FloatingSphereNav = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const menuRef = useRef<HTMLDivElement>(null);
   const dragControls = useDragControls();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { toggleNavigation } = useNavigation();
 
   const navItems: NavItem[] = [
-    { name: 'Home', icon: <Home className="h-5 w-5" />, href: '#home', color: '#00f5ff' },
-    { name: 'About', icon: <User className="h-5 w-5" />, href: '#about', color: '#8b5cf6' },
-    { name: 'Skills', icon: <Brain className="h-5 w-5" />, href: '#tech', color: '#f472b6' },
-    { name: 'Projects', icon: <FolderOpen className="h-5 w-5" />, href: '#projects', color: '#10b981' },
-    { name: 'Globe', icon: <Globe className="h-5 w-5" />, href: '#globe', color: '#f59e0b' },
-    { name: 'Contact', icon: <MessageSquare className="h-5 w-5" />, href: '#contact', color: '#ef4444' },
+    { name: 'Home', icon: <Home className="h-5 w-5" />, path: '/home', color: '#00f5ff' },
+    { name: 'About', icon: <User className="h-5 w-5" />, path: '/about', color: '#8b5cf6' },
+    { name: 'Skills', icon: <Brain className="h-5 w-5" />, path: '/skills', color: '#f472b6' },
+    { name: 'Projects', icon: <FolderOpen className="h-5 w-5" />, path: '/projects', color: '#10b981' },
+    { name: 'Globe', icon: <Globe className="h-5 w-5" />, path: '/globe', color: '#f59e0b' },
+    { name: 'Contact', icon: <MessageSquare className="h-5 w-5" />, path: '/contact', color: '#ef4444' },
   ];
+
+
 
   // Handle click outside to close menu
   useEffect(() => {
@@ -53,31 +60,6 @@ const FloatingSphereNav = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isOpen]);
-
-  // Track scroll position to determine active section
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll('section');
-      const scrollPosition = window.scrollY + 200;
-
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.id;
-
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          setActiveSection(sectionId);
-        }
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initialize active section on load
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   // Calculate positions for the semicircle menu items
   const getSemicirclePosition = (index: number, total: number, radius: number) => {
@@ -105,6 +87,7 @@ const FloatingSphereNav = () => {
       dragTransition={{ bounceStiffness: 300, bounceDamping: 20 }}
       whileDrag={{ scale: 1.1 }}
       animate={{ x: position.x, y: position.y }}
+
       onDragEnd={(_, info) => {
         setPosition({
           x: position.x + info.offset.x,
@@ -136,60 +119,56 @@ const FloatingSphereNav = () => {
             <TooltipProvider key={item.name}>
               <Tooltip delayDuration={100}>
                 <TooltipTrigger asChild>
-                  <motion.div
-                    initial={{ scale: 0, x: 0, y: 0, opacity: 0 }}
-                    animate={{ 
-                      scale: 1, 
-                      x: position.x, 
-                      y: position.y, 
-                      opacity: 1,
-                      transition: { 
-                        type: 'spring',
-                        stiffness: 400,
-                        damping: 25,
-                        delay: index * 0.05
-                      }
-                    }}
-                    exit={{ 
-                      scale: 0, 
-                      x: 0, 
-                      y: 0, 
-                      opacity: 0,
-                      transition: { 
-                        type: 'spring',
-                        stiffness: 400,
-                        damping: 25,
-                        delay: (navItems.length - index) * 0.03
-                      }
-                    }}
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="absolute"
-                  >
-                    <a
-                      href={item.href}
+                                      <motion.div
+                      initial={{ scale: 0, x: 0, y: 0, opacity: 0 }}
+                      animate={{ 
+                        scale: 1, 
+                        x: position.x, 
+                        y: position.y, 
+                        opacity: 1,
+                        transition: { 
+                          type: 'spring',
+                          stiffness: 400,
+                          damping: 25,
+                          delay: index * 0.05
+                        }
+                      }}
+                      exit={{ 
+                        scale: 0, 
+                        x: 0, 
+                        y: 0, 
+                        opacity: 0,
+                        transition: { 
+                          type: 'spring',
+                          stiffness: 400,
+                          damping: 25,
+                          delay: (navItems.length - index) * 0.03
+                        }
+                      }}
+                      whileHover={{ scale: 1.2 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="absolute"
+
+                    >
+                    <button
                       className={`flex items-center justify-center rounded-full p-3
                                 w-12 h-12 bg-black/30 backdrop-blur-md
                                 border-2 transition-all duration-300
-                                ${activeSection === item.href.substring(1) 
+                                ${location.pathname === item.path 
                                   ? `border-[${item.color}] shadow-lg shadow-[${item.color}]/30`
                                   : 'border-gray-700 hover:border-gray-400'}`}
                       style={{ 
-                        boxShadow: activeSection === item.href.substring(1) 
+                        boxShadow: location.pathname === item.path 
                           ? `0 0 15px ${item.color}40`
                           : 'none'
                       }}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        const element = document.querySelector(item.href);
-                        if (element) {
-                          element.scrollIntoView({ behavior: 'smooth' });
-                        }
+                      onClick={() => {
+                        navigate(item.path);
                         setIsOpen(false);
                       }}
                     >
                       <span style={{ color: item.color }}>{item.icon}</span>
-                    </a>
+                    </button>
                   </motion.div>
                 </TooltipTrigger>
                 <TooltipContent side="top">
@@ -201,27 +180,60 @@ const FloatingSphereNav = () => {
         })}
       </AnimatePresence>
 
-      {/* Close button that appears when menu is open */}
+      {/* Close button and toggle button that appear when menu is open */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ 
-              scale: 1, 
-              opacity: 1,
-              transition: { delay: 0.1 }
-            }}
-            exit={{ scale: 0, opacity: 0 }}
-            className="absolute top-0 right-0 -mr-3 -mt-3"
-          >
-            <button
-              onClick={() => setIsOpen(false)}
-              className="bg-black/50 text-white rounded-full p-1
-                        border border-gray-700 shadow-lg"
+          <>
+            {/* Toggle button */}
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ 
+                scale: 1, 
+                opacity: 1,
+                transition: { delay: 0.1 }
+              }}
+              exit={{ scale: 0, opacity: 0 }}
+              className="absolute top-0 left-0 -ml-3 -mt-3"
             >
-              <X className="h-4 w-4" />
-            </button>
-          </motion.div>
+              <TooltipProvider>
+                <Tooltip delayDuration={100}>
+                  <TooltipTrigger asChild>
+                    <button
+                      onClick={toggleNavigation}
+                      className="bg-black/50 text-white rounded-full p-2
+                                border border-gray-700 shadow-lg hover:bg-black/70
+                                transition-all duration-300"
+                    >
+                      <Settings className="h-4 w-4" />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent side="top">
+                    <p>Switch to Bottom Nav</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </motion.div>
+            
+            {/* Close button */}
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ 
+                scale: 1, 
+                opacity: 1,
+                transition: { delay: 0.1 }
+              }}
+              exit={{ scale: 0, opacity: 0 }}
+              className="absolute top-0 right-0 -mr-3 -mt-3"
+            >
+              <button
+                onClick={() => setIsOpen(false)}
+                className="bg-black/50 text-white rounded-full p-1
+                          border border-gray-700 shadow-lg"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
 
@@ -230,6 +242,8 @@ const FloatingSphereNav = () => {
         className="absolute inset-0 cursor-move"
         onPointerDown={startDrag}
       />
+
+
 
       {/* Main sphere button */}
       <motion.button

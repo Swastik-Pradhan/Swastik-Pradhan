@@ -122,7 +122,7 @@ const ContactSection = () => {
             <Card className="tech-card">
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold text-neon-purple mb-4">Social Links</h3>
-                <div className="flex gap-4">
+                <div className="flex gap-4 flex-wrap">
                   <a href="https://github.com/Swastik-Pradhan" target="_blank" rel="noopener noreferrer">
                     <Button variant="outline" size="sm" className="border-neon-blue text-neon-blue hover:bg-neon-blue hover:text-gray-900">
                       GitHub
@@ -131,6 +131,11 @@ const ContactSection = () => {
                   <a href="https://linkedin.com/in/Swastik-Pradhan" target="_blank" rel="noopener noreferrer">
                     <Button variant="outline" size="sm" className="border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-gray-900">
                       LinkedIn
+                    </Button>
+                  </a>
+                  <a href="https://open.spotify.com/user/8src0sutylxdo3ejg94gykr90" target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" size="sm" className="border-green-500 text-green-400 hover:bg-green-500 hover:text-gray-900">
+                      Spotify
                     </Button>
                   </a>
                 </div>

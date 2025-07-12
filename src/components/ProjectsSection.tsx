@@ -26,10 +26,14 @@ const ProjectsSection = () => {
       description: "Machine learning classifier using GTZAN dataset achieving 86% accuracy with Random Forest. Features audio analysis with Librosa and real-time prediction GUI.",
       image: "/placeholder.svg",
       tags: ["Python", "scikit-learn", "Librosa", "Tkinter", "NumPy"],
-      github: "https://github.com/Swastik-Pradhan",
+      github: "https://github.com/Swastik-Pradhan/music-genre-classifier",
       demo: "#"
     }
   ];
+
+  const handleGitHubClick = (url: string) => {
+    window.open(url, '_blank');
+  };
 
   return (
     <section className="py-20 px-4">
@@ -62,11 +66,12 @@ const ProjectsSection = () => {
               </CardContent>
               
               <CardFooter className="flex gap-3">
-                <Button size="sm" className="neon-button flex-1">
+                <Button 
+                  size="sm" 
+                  className="neon-button flex-1"
+                  onClick={() => handleGitHubClick(project.github)}
+                >
                   GitHub
-                </Button>
-                <Button size="sm" variant="outline" className="border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-gray-900 flex-1">
-                  Live Demo
                 </Button>
               </CardFooter>
             </Card>

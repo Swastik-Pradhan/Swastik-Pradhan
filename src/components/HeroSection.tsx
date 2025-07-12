@@ -1,17 +1,36 @@
 
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
+  const handleDownloadResume = () => {
+    // Create a link element
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'SwastikPradhan_CV.pdf';
+    link.target = '_blank';
+    
+    // Append to body, click, and remove
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleViewWork = () => {
+    navigate('/projects');
+  };
+
   return (
-    <section className="min-h-screen flex items-center justify-center relative gradient-bg">
-      <div className="text-center z-10 px-4">
+    <section className="py-20 px-4 md:px-8 max-w-6xl mx-auto flex items-center justify-center relative">
+      <div className="text-center z-10">
         <div 
           className={`transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
@@ -27,10 +46,14 @@ const HeroSection = () => {
             Crafting digital experiences with cutting-edge technology and creative innovation
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button className="neon-button">
+            <Button className="neon-button" onClick={handleViewWork}>
               View My Work
             </Button>
-            <Button variant="outline" className="border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-gray-900">
+            <Button 
+              variant="outline" 
+              className="border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-gray-900"
+              onClick={handleDownloadResume}
+            >
               Download Resume
             </Button>
           </div>

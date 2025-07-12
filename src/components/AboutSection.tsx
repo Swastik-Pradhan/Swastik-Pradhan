@@ -10,24 +10,38 @@ const AboutSection = () => {
           </h2>
           <div className="space-y-4 text-gray-300 leading-relaxed">
             <p>
-              Hi, I'm <span className="text-neon-blue font-semibold">Swastik Pradhan</span>, a passionate Computer Science student pursuing B.Tech in CSE with specialization in Big Data Analytics at Lovely Professional University.
+              Hi, I'm <span className="text-neon-blue font-semibold">Swastik Pradhan</span>, a curious mind at the intersection of technology, creativity, and impact. Currently pursuing a B.Tech in Computer Science and Engineering with a specialization in Big Data Analytics, I thrive on solving real-world problems with data-driven solutions and intuitive design.
             </p>
             <p>
-              I excel in building AI/ML solutions, real-time applications, and data-driven projects. With expertise in Python, TensorFlow, and modern web technologies, I create innovative solutions that bridge the gap between complex algorithms and user-friendly interfaces.
+              I enjoy exploring diverse domains, from AI and Web Development to Data Visualization and Social Impact Projects. Whether it's building dashboards in Power BI or exploring ensemble models in machine learning, I believe every project is an opportunity to grow and make a difference.
             </p>
             <p>
-              Beyond academics, I'm actively involved in community service through NSS, contributing to social causes while continuously expanding my technical skills through hands-on projects and certifications.
+              When I'm not coding or designing, you'll find me writing poetry, diving into music, or exploring the nuances of human emotions through storytelling.
+            </p>
+            <p>
+              I may not be the most efficient with every tool I use, but I always finish what I start, on time. Whether it's AI, Google, or just relentless problem-solving, I find a way to deliver.
+            </p>
+            <p>
+              Let's build something meaningful together.
             </p>
           </div>
           
-          <div className="grid grid-cols-2 gap-4 pt-6">
-            <div className="tech-card text-center">
-              <h3 className="text-2xl font-bold text-neon-blue mb-2">90%+</h3>
-              <p className="text-sm text-gray-400">ML Model Accuracy</p>
+          {/* Statistics Section */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+            <div className="bg-gradient-to-br from-neon-blue/20 to-purple-600/20 backdrop-blur-sm border border-neon-blue/30 rounded-lg p-4 text-center">
+              <div className="text-2xl mb-2">✍️</div>
+              <div className="text-neon-blue font-bold text-xl">10+</div>
+              <div className="text-gray-300 text-sm">Poems Written</div>
             </div>
-            <div className="tech-card text-center">
-              <h3 className="text-2xl font-bold text-neon-purple mb-2">27</h3>
-              <p className="text-sm text-gray-400">ISL Gestures Classified</p>
+            <div className="bg-gradient-to-br from-purple-600/20 to-pink-600/20 backdrop-blur-sm border border-purple-600/30 rounded-lg p-4 text-center">
+              <div className="text-2xl mb-2">🎧</div>
+              <div className="text-purple-400 font-bold text-xl">100,000+</div>
+              <div className="text-gray-300 text-sm">Hours of Music Listened</div>
+            </div>
+            <div className="bg-gradient-to-br from-pink-600/20 to-orange-600/20 backdrop-blur-sm border border-pink-600/30 rounded-lg p-4 text-center">
+              <div className="text-2xl mb-2">🌟</div>
+              <div className="text-pink-400 font-bold text-xl">Infinite ☕</div>
+              <div className="text-gray-300 text-sm">Cups of Curiosity</div>
             </div>
           </div>
         </div>
