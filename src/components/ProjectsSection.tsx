@@ -6,27 +6,27 @@ import { Badge } from '@/components/ui/badge';
 const ProjectsSection = () => {
   const projects = [
     {
-      title: "Data Analytics Dashboard",
-      description: "Interactive dashboard built with React and D3.js for visualizing complex datasets with real-time updates.",
+      title: "Signify – Real-Time ISL Translator",
+      description: "Built for Sociothon (NSS Hackathon) – a real-time Indian Sign Language to speech and speech-to-gesture translation app with 90-94% accuracy on 27 gestures.",
       image: "/placeholder.svg",
-      tags: ["React", "D3.js", "Python", "MongoDB"],
-      github: "#",
+      tags: ["Python", "OpenCV", "TensorFlow", "Keras", "Tkinter"],
+      github: "https://github.com/Swastik-Pradhan",
       demo: "#"
     },
     {
-      title: "E-Commerce Platform",
-      description: "Full-stack e-commerce solution with payment integration, inventory management, and user authentication.",
+      title: "Real-Time Memory Allocation Tracker",
+      description: "Simulation tool for dynamic memory allocation algorithms (First Fit, Best Fit, Worst Fit) with real-time visualization and multi-threading support.",
       image: "/placeholder.svg",
-      tags: ["Next.js", "Stripe", "PostgreSQL", "Tailwind"],
-      github: "#",
+      tags: ["Python", "Tkinter", "Threading", "OS Concepts"],
+      github: "https://github.com/Swastik-Pradhan",
       demo: "#"
     },
     {
-      title: "Machine Learning Model",
-      description: "Predictive analytics model for customer behavior analysis using scikit-learn and TensorFlow.",
+      title: "Music Genre Classifier",
+      description: "Machine learning classifier using GTZAN dataset achieving 86% accuracy with Random Forest. Features audio analysis with Librosa and real-time prediction GUI.",
       image: "/placeholder.svg",
-      tags: ["Python", "TensorFlow", "Pandas", "Jupyter"],
-      github: "#",
+      tags: ["Python", "scikit-learn", "Librosa", "Tkinter", "NumPy"],
+      github: "https://github.com/Swastik-Pradhan",
       demo: "#"
     }
   ];
