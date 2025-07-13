@@ -4,7 +4,7 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/", // ✅ Important for root-level GitHub Pages
+  base: "/Swastik-Pradhan/", // ✅ Important for GitHub Pages subdirectory
   server: {
     host: "::",
     port: 8080,
