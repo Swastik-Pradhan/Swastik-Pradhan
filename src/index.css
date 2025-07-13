@@ -260,3 +260,573 @@
   animation: float-delay-2 3s ease-in-out infinite 2s;
 }
 
+/* Easter egg shake animation */
+@keyframes shake {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-10px) translateY(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(10px) translateY(5px); }
+}
+
+/* Clean Secret Theme */
+body.secret-theme {
+  background: #000000 !important;
+  color: #ffffff !important;
+  transition: all 0.5s ease;
+}
+
+/* Remove all border effects from secret theme */
+.secret-theme *,
+.secret-theme *:before,
+.secret-theme *:after {
+  border: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Keep only neon button glow if desired */
+.secret-theme .neon-button {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important;
+  animation: secret-border-glow 2s ease-in-out infinite !important;
+}
+
+/* Enhanced secret theme animations */
+@keyframes secret-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+  }
+}
+
+@keyframes secret-pulse {
+  0%, 100% { 
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes secret-text-glow {
+  0%, 100% { 
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  }
+  50% { 
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+  }
+}
+
+@keyframes secret-big-text-glow {
+  0%, 100% { 
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 255, 255, 0.4);
+  }
+  50% { 
+    text-shadow: 0 0 25px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.6);
+  }
+}
+
+@keyframes secret-border-glow {
+  0%, 100% { 
+    border-color: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  }
+  50% { 
+    border-color: #ffffff;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+  }
+}
+
+/* Additional easter egg animations */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes secret-float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% { 
+    transform: translateY(-10px) rotate(2deg);
+  }
+  50% { 
+    transform: translateY(-20px) rotate(0deg);
+  }
+  75% { 
+    transform: translateY(-10px) rotate(-2deg);
+  }
+}
+
+/* Clean background styles */
+.secret-theme .bg-background,
+.secret-theme .bg-slate-950,
+.secret-theme .bg-gray-950,
+.secret-theme .bg-zinc-950,
+.secret-theme .bg-neutral-950,
+.secret-theme .bg-stone-950 {
+  background: #000000 !important;
+}
+
+.secret-theme .bg-card,
+.secret-theme .bg-slate-900,
+.secret-theme .bg-gray-900,
+.secret-theme .bg-zinc-900,
+.secret-theme .bg-neutral-900,
+.secret-theme .bg-stone-900 {
+  background: #0a0a0a !important;
+}
+
+.secret-theme .text-foreground,
+.secret-theme .text-white,
+.secret-theme .text-slate-100,
+.secret-theme .text-gray-100,
+.secret-theme .text-zinc-100,
+.secret-theme .text-neutral-100,
+.secret-theme .text-stone-100 {
+  color: #ffffff !important;
+  animation: secret-text-glow 3s ease-in-out infinite !important;
+}
+
+/* Big text glow effects for secret theme */
+.secret-theme h1,
+.secret-theme h2,
+.secret-theme h3,
+.secret-theme h4,
+.secret-theme h5,
+.secret-theme h6 {
+  color: #ffffff !important;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 255, 255, 0.4) !important;
+  animation: secret-big-text-glow 2s ease-in-out infinite !important;
+}
+
+.secret-theme .text-2xl,
+.secret-theme .text-3xl,
+.secret-theme .text-4xl,
+.secret-theme .text-5xl,
+.secret-theme .text-6xl,
+.secret-theme .text-7xl,
+.secret-theme .text-8xl,
+.secret-theme .text-9xl {
+  color: #ffffff !important;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 0 35px rgba(255, 255, 255, 0.5) !important;
+  animation: secret-big-text-glow 2s ease-in-out infinite !important;
+}
+
+.secret-theme .text-xl,
+.secret-theme .text-lg {
+  color: #ffffff !important;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.3) !important;
+  animation: secret-big-text-glow 2.5s ease-in-out infinite !important;
+}
+
+/* Additional big text elements */
+.secret-theme [class*="title"],
+.secret-theme [class*="heading"],
+.secret-theme [class*="name"],
+.secret-theme [class*="brand"],
+.secret-theme [class*="logo"] {
+  color: #ffffff !important;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 255, 255, 0.4) !important;
+  animation: secret-big-text-glow 2s ease-in-out infinite !important;
+}
+
+/* Target all text elements that might be page titles or headings */
+.secret-theme span,
+.secret-theme div,
+.secret-theme p {
+  color: #ffffff !important;
+}
+
+/* Force glow on all text content */
+.secret-theme * {
+  color: #ffffff !important;
+}
+
+/* Ensure all text elements have some glow */
+.secret-theme p,
+.secret-theme span,
+.secret-theme div,
+.secret-theme a {
+  color: #ffffff !important;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Target specific neon-blue text that should glow in secret theme */
+.secret-theme .text-neon-blue,
+.secret-theme [class*="neon-blue"] {
+  color: #ffffff !important;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 255, 255, 0.4) !important;
+  animation: secret-big-text-glow 2s ease-in-out infinite !important;
+}
+
+/* Target all colored text elements that should glow */
+.secret-theme .text-neon-purple,
+.secret-theme .text-neon-pink,
+.secret-theme .text-purple-400,
+.secret-theme .text-pink-400,
+.secret-theme [class*="neon-purple"],
+.secret-theme [class*="neon-pink"] {
+  color: #ffffff !important;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 255, 255, 0.4) !important;
+  animation: secret-big-text-glow 2s ease-in-out infinite !important;
+}
+
+/* Target all heading elements specifically */
+.secret-theme h1,
+.secret-theme h2,
+.secret-theme h3,
+.secret-theme h4,
+.secret-theme h5,
+.secret-theme h6 {
+  color: #ffffff !important;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 255, 255, 0.4) !important;
+  animation: secret-big-text-glow 2s ease-in-out infinite !important;
+}
+
+/* Target all text within headings */
+.secret-theme h1 *,
+.secret-theme h2 *,
+.secret-theme h3 *,
+.secret-theme h4 *,
+.secret-theme h5 *,
+.secret-theme h6 * {
+  color: #ffffff !important;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 255, 255, 0.4) !important;
+  animation: secret-big-text-glow 2s ease-in-out infinite !important;
+}
+
+/* Specific targeting for common page title patterns */
+.secret-theme .page-title,
+.secret-theme .page-heading,
+.secret-theme .main-title,
+.secret-theme .main-heading,
+.secret-theme .content-title,
+.secret-theme .content-heading {
+  color: #ffffff !important;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 0 35px rgba(255, 255, 255, 0.5) !important;
+  animation: secret-big-text-glow 2s ease-in-out infinite !important;
+}
+
+/* Hero section text */
+.secret-theme .hero-title,
+.secret-theme .hero-subtitle,
+.secret-theme .hero-text {
+  color: #ffffff !important;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 0 35px rgba(255, 255, 255, 0.5) !important;
+  animation: secret-big-text-glow 2s ease-in-out infinite !important;
+}
+
+/* Section titles */
+.secret-theme .section-title,
+.secret-theme .section-heading {
+  color: #ffffff !important;
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.85), 0 0 30px rgba(255, 255, 255, 0.45) !important;
+  animation: secret-big-text-glow 2.2s ease-in-out infinite !important;
+}
+
+.secret-theme .text-muted-foreground,
+.secret-theme .text-slate-400,
+.secret-theme .text-gray-400,
+.secret-theme .text-zinc-400,
+.secret-theme .text-neutral-400,
+.secret-theme .text-stone-400 {
+  color: #888888 !important;
+}
+
+/* Ensure common portfolio elements are visible */
+.secret-theme .container,
+.secret-theme .wrapper,
+.secret-theme .content {
+  background: transparent !important;
+}
+
+.secret-theme .bg-slate-950,
+.secret-theme .bg-gray-950,
+.secret-theme .bg-zinc-950 {
+  background: #000000 !important;
+}
+
+.secret-theme .bg-slate-900,
+.secret-theme .bg-gray-900,
+.secret-theme .bg-zinc-900 {
+  background: #111111 !important;
+}
+
+.secret-theme .text-slate-100,
+.secret-theme .text-gray-100,
+.secret-theme .text-zinc-100 {
+  color: #ffffff !important;
+}
+
+.secret-theme .text-slate-400,
+.secret-theme .text-gray-400,
+.secret-theme .text-zinc-400 {
+  color: #cccccc !important;
+}
+
+/* Clean button styles */
+.secret-theme button,
+.secret-theme .btn,
+.secret-theme [role="button"] {
+  background: #0a0a0a !important;
+  color: #ffffff !important;
+  transition: all 0.3s ease !important;
+}
+
+.secret-theme button:hover,
+.secret-theme .btn:hover,
+.secret-theme [role="button"]:hover {
+  background: #1a1a1a !important;
+}
+
+.secret-theme .neon-button:hover {
+  background: #ffffff !important;
+  color: #000000 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.6) !important;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 1) !important;
+}
+
+.secret-theme .tech-card {
+  background: #0a0a0a !important;
+  background-color: #0a0a0a !important;
+  border: 2px solid #ffffff !important;
+  transition: all 0.3s ease !important;
+  animation: secret-border-glow 3s ease-in-out infinite !important;
+}
+
+.secret-theme .tech-card:hover {
+  border-color: #ffffff !important;
+  background: #1a1a1a !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.4) !important;
+  animation: secret-glow 2s ease-in-out infinite !important;
+}
+
+/* Elegant special effects */
+.secret-theme .floating-particle {
+  background: #ffffff !important;
+  opacity: 0.4 !important;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6) !important;
+  animation: secret-float 4s ease-in-out infinite !important;
+}
+
+/* Clean image effects */
+.secret-theme img {
+  filter: brightness(1.1) !important;
+}
+
+/* Clean canvas effect */
+.secret-theme canvas {
+  border-radius: 8px !important;
+}
+
+/* Clean theme - no universal border effects */
+
+.secret-theme .floating-particle {
+  background: #ffffff !important;
+  box-shadow: 0 0 10px #ffffff !important;
+  animation: secret-float 4s ease-in-out infinite;
+}
+
+.secret-theme .gradient-bg {
+  background: linear-gradient(135deg, #000000 0%, #111111 50%, #222222 100%) !important;
+}
+
+/* Clean navigation styling */
+.secret-theme nav {
+  background: rgba(0, 0, 0, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.secret-theme .nav-link {
+  color: #ffffff !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5) !important;
+}
+
+.secret-theme .nav-link:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Clean section styling */
+.secret-theme section {
+  background: #000000 !important;
+  border-radius: 8px !important;
+}
+
+/* Clean text styles */
+.secret-theme h1,
+.secret-theme h2,
+.secret-theme h3,
+.secret-theme h4,
+.secret-theme h5,
+.secret-theme h6,
+.secret-theme p,
+.secret-theme span,
+.secret-theme a {
+  color: #ffffff !important;
+}
+
+.secret-theme a {
+  color: #ffffff !important;
+  transition: all 0.3s ease !important;
+}
+
+.secret-theme a:hover {
+  color: #ffffff !important;
+  opacity: 0.8 !important;
+}
+
+/* Secret theme scrollbar */
+.secret-theme ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.secret-theme ::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+.secret-theme ::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 4px;
+}
+
+.secret-theme ::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+
+/* Light glow for stat cards in secret theme */
+.secret-theme .stat-card, .secret-theme .card, .secret-theme .tech-card {
+  border: 1.5px solid rgba(255,255,255,0.18) !important;
+  box-shadow: 0 0 12px 2px rgba(255,255,255,0.10) !important;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%) !important;
+  border-radius: 1rem !important;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.secret-theme .stat-card:hover, .secret-theme .card:hover, .secret-theme .tech-card:hover {
+  border-color: rgba(255,255,255,0.35) !important;
+  box-shadow: 0 0 24px 4px rgba(255,255,255,0.18) !important;
+}
+
+/* Consistent button hover for both main buttons */
+.secret-theme .main-btn, .secret-theme .main-btn-alt {
+  background: #181818 !important;
+  color: #fff !important;
+  box-shadow: 0 0 10px 2px rgba(255,255,255,0.10) !important;
+  border-radius: 0.6rem !important;
+  border: none !important;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.secret-theme .main-btn:hover, .secret-theme .main-btn-alt:hover {
+  background: #222 !important;
+  color: #fff !important;
+  box-shadow: 0 0 20px 4px rgba(255,255,255,0.18) !important;
+}
+
+/* Glow effect for nav bar icons in secret theme */
+.secret-theme .nav-link, .secret-theme .nav-icon, .secret-theme .navbar-icon, .secret-theme .bottom-nav button, .secret-theme .floating-nav button {
+  box-shadow: none !important;
+  border-radius: 50% !important;
+  transition: box-shadow 0.2s;
+}
+.secret-theme .nav-link:hover, .secret-theme .nav-icon:hover, .secret-theme .navbar-icon:hover, .secret-theme .bottom-nav button:hover, .secret-theme .floating-nav button:hover {
+  box-shadow: 0 0 18px 4px rgba(255,255,255,0.22) !important;
+}
+
+.about-glow-text {
+  text-shadow: 0 0 6px rgba(255,255,255,0.18), 0 0 12px rgba(255,255,255,0.10);
+}
+
+/* Remove nav glow in normal UI */
+.nav-glow-icon, .glow-text {
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.secret-theme .nav-glow-icon, .secret-theme .glow-text {
+  text-shadow: 0 0 12px #00f5ff, 0 0 24px #00f5ff44;
+  box-shadow: 0 0 16px #00f5ff44;
+}
+
+.secret-theme .secret-nav-glow {
+  box-shadow: 0 0 48px 12px rgba(255,255,255,0.28), 0 0 24px 6px #fff8, 0 0 4px 1px #00f5ff66;
+}
+
+@keyframes welcome-wave {
+  0%, 100% { transform: translateY(0); }
+  20% { transform: translateY(-12px); }
+  40% { transform: translateY(0); }
+}
+.animate-welcome-wave {
+  animation: welcome-wave 1.2s cubic-bezier(0.4,0,0.2,1) infinite;
+}
+
+@keyframes welcome-sphere-pulse {
+  0%, 100% { box-shadow: 0 0 32px 8px #00f5ff33, 0 0 0 #00f5ff00; }
+  50% { box-shadow: 0 0 64px 24px #00f5ff66, 0 0 32px #00f5ff22; }
+}
+.animate-welcome-sphere-pulse {
+  animation: welcome-sphere-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+}
+.animate-orbit {
+  animation: orbit 4s linear infinite;
+}
+
+@keyframes welcome-ray {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.7; }
+}
+.animate-welcome-ray {
+  animation: welcome-ray 2.2s ease-in-out infinite;
+}
+
+@keyframes welcome-ripple {
+  0% { opacity: 0.4; transform: scale(0.2); }
+  80% { opacity: 0.2; transform: scale(1.1); }
+  100% { opacity: 0; transform: scale(1.3); }
+}
+.animate-welcome-ripple {
+  animation: welcome-ripple 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+
+@keyframes slide-up {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up {
+  animation: slide-up 1s cubic-bezier(0.4,0,0.2,1);
+}
+

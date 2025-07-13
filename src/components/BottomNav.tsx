@@ -9,6 +9,7 @@ import {
   Settings
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 
 interface NavItem {
   name: string;
@@ -21,9 +22,12 @@ interface BottomNavProps {
   onToggleNav: () => void;
 }
 
+const isSecretTheme = () => typeof document !== 'undefined' && document.body.classList.contains('secret-theme');
+
 const BottomNav = ({ onToggleNav }: BottomNavProps) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const secretTheme = isSecretTheme();
 
   const navItems: NavItem[] = [
     { name: 'Home', icon: <Home className="h-5 w-5" />, path: '/home', color: '#00f5ff' },
@@ -39,7 +43,7 @@ const BottomNav = ({ onToggleNav }: BottomNavProps) => {
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: 100, opacity: 0 }}
-      className="fixed bottom-6 left-0 right-0 z-50 px-4"
+      className={`fixed bottom-6 left-0 right-0 z-50 px-4 bg-transparent border-none backdrop-blur-none ${secretTheme ? 'secret-nav-glow' : ''}`}
     >
       {/* Navigation items */}
       <div className="flex items-center justify-center gap-2">
@@ -49,8 +53,9 @@ const BottomNav = ({ onToggleNav }: BottomNavProps) => {
             onClick={() => navigate(item.path)}
             className={`flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300
                       ${location.pathname === item.path 
-                        ? 'bg-white/20 text-white shadow-lg' 
-                        : 'text-gray-300 hover:text-white hover:bg-white/10'}`}
+                        ? 'bg-white/10 text-white shadow-lg glow-text' 
+                        : 'text-gray-300 hover:text-white hover:bg-white/10'}
+                      nav-glow-icon`}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             initial={{ opacity: 0, y: 20 }}
@@ -58,8 +63,9 @@ const BottomNav = ({ onToggleNav }: BottomNavProps) => {
             transition={{ delay: index * 0.1 }}
             style={{
               boxShadow: location.pathname === item.path 
-                ? `0 0 20px ${item.color}40`
-                : 'none'
+                ? `0 0 20px ${item.color}40, 0 0 16px #fff8` 
+                : '0 0 8px #fff4',
+              textShadow: '0 0 12px #fff, 0 0 24px #fff4',
             }}
             title={item.name}
           >
@@ -72,13 +78,17 @@ const BottomNav = ({ onToggleNav }: BottomNavProps) => {
         {/* Secret toggle button */}
         <motion.button
           onClick={onToggleNav}
-          className="flex items-center justify-center w-12 h-12 rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-300"
+          className="flex items-center justify-center w-12 h-12 rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-300 nav-glow-icon"
           whileHover={{ scale: 1.1, rotate: 180 }}
           whileTap={{ scale: 0.95 }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
           title="Toggle Navigation Style"
+          style={{
+            boxShadow: '0 0 8px #fff4',
+            textShadow: '0 0 12px #fff, 0 0 24px #fff4',
+          }}
         >
           <Settings className="h-5 w-5" />
         </motion.button>

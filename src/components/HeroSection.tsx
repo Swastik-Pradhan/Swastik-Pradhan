@@ -49,11 +49,7 @@ const HeroSection = () => {
             <Button className="neon-button" onClick={handleViewWork}>
               View My Work
             </Button>
-            <Button 
-              variant="outline" 
-              className="border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-gray-900"
-              onClick={handleDownloadResume}
-            >
+            <Button className="neon-button" onClick={handleDownloadResume}>
               Download Resume
             </Button>
           </div>

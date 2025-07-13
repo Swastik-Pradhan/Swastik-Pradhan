@@ -19,65 +19,65 @@ const BackgroundMusicPlayer = () => {
   const playlistUrl = "https://open.spotify.com/playlist/7iHMbiM2X2A07FFCob65A2?si=68180e235e96426f";
   const profileUrl = "https://open.spotify.com/user/8src0sutylxdo3ejg94gykr90";
 
-  // Local music tracks - Updated with actual filenames
+  // Local music tracks - Updated with cleaned filenames
   const musicTracks = [
-    '/music/[SPOTDOWNLOADER.COM] The Scientist.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Somewhere Only We Know (Nightcore Dreams).mp3',
-    '/music/[SPOTDOWNLOADER.COM] Kho Gaye Hum Kahan.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Memories.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Something Just Like This.mp3',
-    '/music/[SPOTDOWNLOADER.COM] The Nights.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Dandelions.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Anyone.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Enchanted (Nightcore Version).mp3',
-    '/music/[SPOTDOWNLOADER.COM] Night Changes.mp3',
-    '/music/[SPOTDOWNLOADER.COM] a thousand years.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Rewrite The Stars (with James Arthur & Anne-Marie).mp3',
-    '/music/[SPOTDOWNLOADER.COM] Little Do You Know.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Love Me Like You Do.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Hold On.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Story of My Life.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Perfect.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Treat You Better.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Dancing With Your Ghost.mp3',
-    '/music/[SPOTDOWNLOADER.COM] If the World Was Ending (feat. Julia Michaels).mp3',
-    '/music/[SPOTDOWNLOADER.COM] Supermarket Flowers.mp3',
-    '/music/[SPOTDOWNLOADER.COM] See You Again (feat. Charlie Puth).mp3',
-    '/music/[SPOTDOWNLOADER.COM] Wolves.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Hall of Fame (feat. will.i.am).mp3',
-    '/music/[SPOTDOWNLOADER.COM] Rewrite The Stars.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Demons.mp3',
-    '/music/[SPOTDOWNLOADER.COM] lovely (with Khalid).mp3',
-    '/music/[SPOTDOWNLOADER.COM] Castle on the Hill.mp3',
-    '/music/[SPOTDOWNLOADER.COM] drivers license.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Eenie Meenie.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Fight Song.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Yellow.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Viva La Vida.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Thunder.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Sweet but Psycho.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Shape of You.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Señorita.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Rockabye (feat. Sean Paul & Anne-Marie).mp3',
-    '/music/[SPOTDOWNLOADER.COM] Older.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Natural.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Monody.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Kings & Queens.mp3',
-    '/music/[SPOTDOWNLOADER.COM] In The Stars.mp3',
-    '/music/[SPOTDOWNLOADER.COM] I Want It That Way.mp3',
-    '/music/[SPOTDOWNLOADER.COM] I Don\'t Care.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Hymn for the Weekend.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Hey, Soul Sister.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Girls Like You (feat. Cardi B) - Cardi B Version.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Ghost.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Galway Girl.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Fix You.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Faded.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Darkside.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Cheap Thrills.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Believer.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Baby.mp3',
-    '/music/[SPOTDOWNLOADER.COM] Alone.mp3'
+    '/music/The Scientist.mp3',
+    '/music/Somewhere Only We Know (Nightcore Dreams).mp3',
+    '/music/Kho Gaye Hum Kahan.mp3',
+    '/music/Memories.mp3',
+    '/music/Something Just Like This.mp3',
+    '/music/The Nights.mp3',
+    '/music/Dandelions.mp3',
+    '/music/Anyone.mp3',
+    '/music/Enchanted (Nightcore Version).mp3',
+    '/music/Night Changes.mp3',
+    '/music/a thousand years.mp3',
+    '/music/Rewrite The Stars (with James Arthur & Anne-Marie).mp3',
+    '/music/Little Do You Know.mp3',
+    '/music/Love Me Like You Do.mp3',
+    '/music/Hold On.mp3',
+    '/music/Story of My Life.mp3',
+    '/music/Perfect.mp3',
+    '/music/Treat You Better.mp3',
+    '/music/Dancing With Your Ghost.mp3',
+    '/music/If the World Was Ending (feat. Julia Michaels).mp3',
+    '/music/Supermarket Flowers.mp3',
+    '/music/See You Again (feat. Charlie Puth).mp3',
+    '/music/Wolves.mp3',
+    '/music/Hall of Fame (feat. will.i.am).mp3',
+    '/music/Rewrite The Stars.mp3',
+    '/music/Demons.mp3',
+    '/music/lovely (with Khalid).mp3',
+    '/music/Castle on the Hill.mp3',
+    '/music/drivers license.mp3',
+    '/music/Eenie Meenie.mp3',
+    '/music/Fight Song.mp3',
+    '/music/Yellow.mp3',
+    '/music/Viva La Vida.mp3',
+    '/music/Thunder.mp3',
+    '/music/Sweet but Psycho.mp3',
+    '/music/Shape of You.mp3',
+    '/music/Señorita.mp3',
+    '/music/Rockabye (feat. Sean Paul & Anne-Marie).mp3',
+    '/music/Older.mp3',
+    '/music/Natural.mp3',
+    '/music/Monody.mp3',
+    '/music/Kings & Queens.mp3',
+    '/music/In The Stars.mp3',
+    '/music/I Want It That Way.mp3',
+    '/music/I Don\'t Care.mp3',
+    '/music/Hymn for the Weekend.mp3',
+    '/music/Hey, Soul Sister.mp3',
+    '/music/Girls Like You (feat. Cardi B) - Cardi B Version.mp3',
+    '/music/Ghost.mp3',
+    '/music/Galway Girl.mp3',
+    '/music/Fix You.mp3',
+    '/music/Faded.mp3',
+    '/music/Darkside.mp3',
+    '/music/Cheap Thrills.mp3',
+    '/music/Believer.mp3',
+    '/music/Baby.mp3',
+    '/music/Alone.mp3'
   ];
 
   // Secret key combination to show/hide controls (Ctrl + M)
@@ -496,8 +496,8 @@ const BackgroundMusicPlayer = () => {
     if (musicTracks.length === 0) return 'No local tracks';
     const trackPath = musicTracks[currentTrack];
     const fileName = trackPath.split('/').pop() || '';
-    // Remove the [SPOTDOWNLOADER.COM] prefix and .mp3 extension
-    return fileName.replace('[SPOTDOWNLOADER.COM] ', '').replace('.mp3', '') || 'Unknown Track';
+    // Remove the .mp3 extension
+    return fileName.replace('.mp3', '') || 'Unknown Track';
   }, [musicTracks, currentTrack]);
 
   return (
@@ -636,7 +636,7 @@ const BackgroundMusicPlayer = () => {
                       </div>
                       <div className="max-h-48 overflow-y-auto space-y-1 pr-2">
                         {musicTracks.map((track, index) => {
-                          const trackName = track.split('/').pop()?.replace('[SPOTDOWNLOADER.COM] ', '').replace('.mp3', '') || 'Unknown Track';
+                          const trackName = track.split('/').pop()?.replace('.mp3', '') || 'Unknown Track';
                           const isCurrentTrack = index === currentTrack;
                           
                           return (

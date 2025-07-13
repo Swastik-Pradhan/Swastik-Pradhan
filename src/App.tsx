@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NavigationProvider } from "./contexts/NavigationContext";
 import BackgroundMusicPlayer from "./components/BackgroundMusicPlayer";
+import EasterEggs from "./components/EasterEggs";
 import Welcome from "./pages/Welcome";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -24,6 +25,7 @@ const App = () => (
       <BrowserRouter>
         <NavigationProvider>
           <BackgroundMusicPlayer />
+          <EasterEggs />
           <Routes>
             <Route path="/" element={<Welcome />} />
             <Route path="/home" element={<Home />} />

@@ -1,9 +1,23 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import SecretWelcome from './SecretWelcome';
+
+const isSecretTheme = () => typeof document !== 'undefined' && document.body.classList.contains('secret-theme');
 
 const Welcome = () => {
+  const [secret, setSecret] = useState(false);
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setSecret(isSecretTheme());
+    // Listen for theme changes if toggled dynamically
+    const observer = new MutationObserver(() => setSecret(isSecretTheme()));
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
+
+  if (secret) return <SecretWelcome />;
 
   useEffect(() => {
     // Fade in effect
