@@ -20,64 +20,64 @@ const BackgroundMusicPlayer = () => {
   const profileUrl = "https://open.spotify.com/user/8src0sutylxdo3ejg94gykr90";
 
   // Local music tracks - Updated with cleaned filenames
-  const musicTracks = [
-    '/music/The Scientist.mp3',
-    '/music/Somewhere Only We Know (Nightcore Dreams).mp3',
-    '/music/Kho Gaye Hum Kahan.mp3',
-    '/music/Memories.mp3',
-    '/music/Something Just Like This.mp3',
-    '/music/The Nights.mp3',
-    '/music/Dandelions.mp3',
-    '/music/Anyone.mp3',
-    '/music/Enchanted (Nightcore Version).mp3',
-    '/music/Night Changes.mp3',
-    '/music/a thousand years.mp3',
-    '/music/Rewrite The Stars (with James Arthur & Anne-Marie).mp3',
-    '/music/Little Do You Know.mp3',
-    '/music/Love Me Like You Do.mp3',
-    '/music/Hold On.mp3',
-    '/music/Story of My Life.mp3',
-    '/music/Perfect.mp3',
-    '/music/Treat You Better.mp3',
-    '/music/Dancing With Your Ghost.mp3',
-    '/music/If the World Was Ending (feat. Julia Michaels).mp3',
-    '/music/Supermarket Flowers.mp3',
-    '/music/See You Again (feat. Charlie Puth).mp3',
-    '/music/Wolves.mp3',
-    '/music/Hall of Fame (feat. will.i.am).mp3',
-    '/music/Rewrite The Stars.mp3',
-    '/music/Demons.mp3',
-    '/music/lovely (with Khalid).mp3',
-    '/music/Castle on the Hill.mp3',
-    '/music/drivers license.mp3',
-    '/music/Eenie Meenie.mp3',
-    '/music/Fight Song.mp3',
-    '/music/Yellow.mp3',
-    '/music/Viva La Vida.mp3',
-    '/music/Thunder.mp3',
-    '/music/Sweet but Psycho.mp3',
-    '/music/Shape of You.mp3',
-    '/music/Señorita.mp3',
-    '/music/Rockabye (feat. Sean Paul & Anne-Marie).mp3',
-    '/music/Older.mp3',
-    '/music/Natural.mp3',
-    '/music/Monody.mp3',
-    '/music/Kings & Queens.mp3',
-    '/music/In The Stars.mp3',
-    '/music/I Want It That Way.mp3',
-    '/music/I Don\'t Care.mp3',
-    '/music/Hymn for the Weekend.mp3',
-    '/music/Hey, Soul Sister.mp3',
-    '/music/Girls Like You (feat. Cardi B) - Cardi B Version.mp3',
-    '/music/Ghost.mp3',
-    '/music/Galway Girl.mp3',
-    '/music/Fix You.mp3',
-    '/music/Faded.mp3',
-    '/music/Darkside.mp3',
-    '/music/Cheap Thrills.mp3',
-    '/music/Believer.mp3',
-    '/music/Baby.mp3',
-    '/music/Alone.mp3'
+  const musicFiles = [
+    `${import.meta.env.BASE_URL}music/The Scientist.mp3`,
+    `${import.meta.env.BASE_URL}music/Somewhere Only We Know (Nightcore Dreams).mp3`,
+    `${import.meta.env.BASE_URL}music/Kho Gaye Hum Kahan.mp3`,
+    `${import.meta.env.BASE_URL}music/Memories.mp3`,
+    `${import.meta.env.BASE_URL}music/Something Just Like This.mp3`,
+    `${import.meta.env.BASE_URL}music/The Nights.mp3`,
+    `${import.meta.env.BASE_URL}music/Dandelions.mp3`,
+    `${import.meta.env.BASE_URL}music/Anyone.mp3`,
+    `${import.meta.env.BASE_URL}music/Enchanted (Nightcore Version).mp3`,
+    `${import.meta.env.BASE_URL}music/Night Changes.mp3`,
+    `${import.meta.env.BASE_URL}music/a thousand years.mp3`,
+    `${import.meta.env.BASE_URL}music/Rewrite The Stars (with James Arthur & Anne-Marie).mp3`,
+    `${import.meta.env.BASE_URL}music/Little Do You Know.mp3`,
+    `${import.meta.env.BASE_URL}music/Love Me Like You Do.mp3`,
+    `${import.meta.env.BASE_URL}music/Hold On.mp3`,
+    `${import.meta.env.BASE_URL}music/Story of My Life.mp3`,
+    `${import.meta.env.BASE_URL}music/Perfect.mp3`,
+    `${import.meta.env.BASE_URL}music/Treat You Better.mp3`,
+    `${import.meta.env.BASE_URL}music/Dancing With Your Ghost.mp3`,
+    `${import.meta.env.BASE_URL}music/If the World Was Ending (feat. Julia Michaels).mp3`,
+    `${import.meta.env.BASE_URL}music/Supermarket Flowers.mp3`,
+    `${import.meta.env.BASE_URL}music/See You Again (feat. Charlie Puth).mp3`,
+    `${import.meta.env.BASE_URL}music/Wolves.mp3`,
+    `${import.meta.env.BASE_URL}music/Hall of Fame (feat. will.i.am).mp3`,
+    `${import.meta.env.BASE_URL}music/Rewrite The Stars.mp3`,
+    `${import.meta.env.BASE_URL}music/Demons.mp3`,
+    `${import.meta.env.BASE_URL}music/lovely (with Khalid).mp3`,
+    `${import.meta.env.BASE_URL}music/Castle on the Hill.mp3`,
+    `${import.meta.env.BASE_URL}music/drivers license.mp3`,
+    `${import.meta.env.BASE_URL}music/Eenie Meenie.mp3`,
+    `${import.meta.env.BASE_URL}music/Fight Song.mp3`,
+    `${import.meta.env.BASE_URL}music/Yellow.mp3`,
+    `${import.meta.env.BASE_URL}music/Viva La Vida.mp3`,
+    `${import.meta.env.BASE_URL}music/Thunder.mp3`,
+    `${import.meta.env.BASE_URL}music/Sweet but Psycho.mp3`,
+    `${import.meta.env.BASE_URL}music/Shape of You.mp3`,
+    `${import.meta.env.BASE_URL}music/Señorita.mp3`,
+    `${import.meta.env.BASE_URL}music/Rockabye (feat. Sean Paul & Anne-Marie).mp3`,
+    `${import.meta.env.BASE_URL}music/Older.mp3`,
+    `${import.meta.env.BASE_URL}music/Natural.mp3`,
+    `${import.meta.env.BASE_URL}music/Monody.mp3`,
+    `${import.meta.env.BASE_URL}music/Kings & Queens.mp3`,
+    `${import.meta.env.BASE_URL}music/In The Stars.mp3`,
+    `${import.meta.env.BASE_URL}music/I Want It That Way.mp3`,
+    `${import.meta.env.BASE_URL}music/I Don't Care.mp3`,
+    `${import.meta.env.BASE_URL}music/Hymn for the Weekend.mp3`,
+    `${import.meta.env.BASE_URL}music/Hey, Soul Sister.mp3`,
+    `${import.meta.env.BASE_URL}music/Girls Like You (feat. Cardi B) - Cardi B Version.mp3`,
+    `${import.meta.env.BASE_URL}music/Ghost.mp3`,
+    `${import.meta.env.BASE_URL}music/Galway Girl.mp3`,
+    `${import.meta.env.BASE_URL}music/Fix You.mp3`,
+    `${import.meta.env.BASE_URL}music/Faded.mp3`,
+    `${import.meta.env.BASE_URL}music/Darkside.mp3`,
+    `${import.meta.env.BASE_URL}music/Cheap Thrills.mp3`,
+    `${import.meta.env.BASE_URL}music/Believer.mp3`,
+    `${import.meta.env.BASE_URL}music/Baby.mp3`,
+    `${import.meta.env.BASE_URL}music/Alone.mp3`,
   ];
 
   // Secret key combination to show/hide controls (Ctrl + M)
@@ -118,21 +118,21 @@ const BackgroundMusicPlayer = () => {
       // Play next track when current one ends (like Spotify)
       setTimeout(() => {
         const nextTrack = isShuffled 
-          ? Math.floor(Math.random() * musicTracks.length)
-          : (currentTrack + 1) % musicTracks.length;
+          ? Math.floor(Math.random() * musicFiles.length)
+          : (currentTrack + 1) % musicFiles.length;
         setCurrentTrack(nextTrack);
         const audio = audioRef.current;
         if (audio) {
-          audio.src = musicTracks[nextTrack];
+          audio.src = musicFiles[nextTrack];
           audio.volume = isMuted ? 0 : volume;
           audio.play().catch(() => {
             // If immediate play fails, try next track
             setTimeout(() => {
               const nextNextTrack = isShuffled 
-                ? Math.floor(Math.random() * musicTracks.length)
-                : (nextTrack + 1) % musicTracks.length;
+                ? Math.floor(Math.random() * musicFiles.length)
+                : (nextTrack + 1) % musicFiles.length;
               setCurrentTrack(nextNextTrack);
-              audio.src = musicTracks[nextNextTrack];
+              audio.src = musicFiles[nextNextTrack];
               audio.play();
             }, 100);
           });
@@ -145,21 +145,21 @@ const BackgroundMusicPlayer = () => {
       setIsLoading(false);
       setTimeout(() => {
         const nextTrack = isShuffled 
-          ? Math.floor(Math.random() * musicTracks.length)
-          : (currentTrack + 1) % musicTracks.length;
+          ? Math.floor(Math.random() * musicFiles.length)
+          : (currentTrack + 1) % musicFiles.length;
         setCurrentTrack(nextTrack);
         const audio = audioRef.current;
         if (audio) {
-          audio.src = musicTracks[nextTrack];
+          audio.src = musicFiles[nextTrack];
           audio.volume = isMuted ? 0 : volume;
           audio.play().catch(() => {
             // If immediate play fails, try next track
             setTimeout(() => {
               const nextNextTrack = isShuffled 
-                ? Math.floor(Math.random() * musicTracks.length)
-                : (nextTrack + 1) % musicTracks.length;
+                ? Math.floor(Math.random() * musicFiles.length)
+                : (nextTrack + 1) % musicFiles.length;
               setCurrentTrack(nextNextTrack);
-              audio.src = musicTracks[nextNextTrack];
+              audio.src = musicFiles[nextNextTrack];
               audio.play();
             }, 100);
           });
@@ -210,19 +210,19 @@ const BackgroundMusicPlayer = () => {
       audio.removeEventListener('play', handlePlay);
       audio.removeEventListener('pause', handlePause);
     };
-  }, [volume, isMuted, isPlaying, isShuffled, currentTrack, musicTracks.length]);
+  }, [volume, isMuted, isPlaying, isShuffled, currentTrack, musicFiles.length]);
 
   const getNextTrack = useCallback(() => {
     if (isShuffled) {
-      return Math.floor(Math.random() * musicTracks.length);
+      return Math.floor(Math.random() * musicFiles.length);
     }
     // Standard sequential playback - go to next track
-    return (currentTrack + 1) % musicTracks.length;
-  }, [isShuffled, currentTrack, musicTracks.length]);
+    return (currentTrack + 1) % musicFiles.length;
+  }, [isShuffled, currentTrack, musicFiles.length]);
 
   const playTrack = useCallback((trackIndex: number) => {
     const audio = audioRef.current;
-    if (!audio || trackIndex >= musicTracks.length) {
+    if (!audio || trackIndex >= musicFiles.length) {
       // If no local tracks available, fallback to Spotify
       openSpotifyFallback();
       return;
@@ -248,7 +248,7 @@ const BackgroundMusicPlayer = () => {
       audio.pause();
       
       // Set the new source
-      audio.src = musicTracks[trackIndex];
+      audio.src = musicFiles[trackIndex];
       audio.volume = isMuted ? 0 : volume;
       
       // Immediate playback with minimal delay
@@ -281,7 +281,7 @@ const BackgroundMusicPlayer = () => {
         playTrack(nextTrack);
       }, 100);
     }
-  }, [musicTracks, isMuted, volume, isPlaying, currentTrack, getNextTrack]);
+  }, [musicFiles, isMuted, volume, isPlaying, currentTrack, getNextTrack]);
 
   const playNextTrack = useCallback(() => {
     const nextTrack = getNextTrack();
@@ -294,7 +294,7 @@ const BackgroundMusicPlayer = () => {
       audio.pause();
       
       // Set new source and immediately try to play
-      audio.src = musicTracks[nextTrack];
+      audio.src = musicFiles[nextTrack];
       audio.volume = isMuted ? 0 : volume;
       
       // Use a small delay to ensure the source is set before playing
@@ -317,7 +317,7 @@ const BackgroundMusicPlayer = () => {
     } else {
       playTrack(nextTrack);
     }
-  }, [getNextTrack, playTrack, musicTracks, isMuted, volume]);
+  }, [getNextTrack, playTrack, musicFiles, isMuted, volume]);
 
   const playPreviousTrack = useCallback(() => {
     let targetTrack: number;
@@ -327,7 +327,7 @@ const BackgroundMusicPlayer = () => {
       targetTrack = playHistoryRef.current.pop() || 0;
     } else {
       // If no history, go to previous track in sequence (like Spotify)
-      targetTrack = currentTrack > 0 ? currentTrack - 1 : musicTracks.length - 1;
+      targetTrack = currentTrack > 0 ? currentTrack - 1 : musicFiles.length - 1;
     }
     
     setCurrentTrack(targetTrack);
@@ -339,7 +339,7 @@ const BackgroundMusicPlayer = () => {
       audio.pause();
       
       // Set new source and immediately try to play
-      audio.src = musicTracks[targetTrack];
+      audio.src = musicFiles[targetTrack];
       audio.volume = isMuted ? 0 : volume;
       
       // Use a small delay to ensure the source is set before playing
@@ -362,10 +362,10 @@ const BackgroundMusicPlayer = () => {
     } else {
       playTrack(targetTrack);
     }
-  }, [currentTrack, musicTracks.length, playTrack, musicTracks, isMuted, volume]);
+  }, [currentTrack, musicFiles.length, playTrack, musicFiles, isMuted, volume]);
 
   const playRandomSong = useCallback(() => {
-    if (musicTracks.length > 0) {
+    if (musicFiles.length > 0) {
       // If music is already playing, just resume the current track
       if (isPlaying) {
         const audio = audioRef.current;
@@ -376,13 +376,13 @@ const BackgroundMusicPlayer = () => {
       }
       
       // Start with a random track (like Spotify shuffle)
-      const trackIndex = Math.floor(Math.random() * musicTracks.length);
+      const trackIndex = Math.floor(Math.random() * musicFiles.length);
       setCurrentTrack(trackIndex);
       playTrack(trackIndex);
     } else {
       openSpotifyFallback();
     }
-  }, [musicTracks.length, isPlaying, playTrack]);
+  }, [musicFiles.length, isPlaying, playTrack]);
 
   const stopMusic = useCallback(() => {
     const audio = audioRef.current;
@@ -493,12 +493,12 @@ const BackgroundMusicPlayer = () => {
   }, [profileUrl]);
 
   const getCurrentTrackName = useCallback(() => {
-    if (musicTracks.length === 0) return 'No local tracks';
-    const trackPath = musicTracks[currentTrack];
+    if (musicFiles.length === 0) return 'No local tracks';
+    const trackPath = musicFiles[currentTrack];
     const fileName = trackPath.split('/').pop() || '';
     // Remove the .mp3 extension
     return fileName.replace('.mp3', '') || 'Unknown Track';
-  }, [musicTracks, currentTrack]);
+  }, [musicFiles, currentTrack]);
 
   return (
     <>
@@ -510,17 +510,17 @@ const BackgroundMusicPlayer = () => {
       />
 
       {/* Preload multiple tracks for instant switching */}
-      {musicTracks.length > 0 && (
+      {musicFiles.length > 0 && (
         <>
           <audio
             preload="auto"
             style={{ display: 'none' }}
-            src={musicTracks[(currentTrack + 1) % musicTracks.length]}
+            src={musicFiles[(currentTrack + 1) % musicFiles.length]}
           />
           <audio
             preload="auto"
             style={{ display: 'none' }}
-            src={musicTracks[currentTrack > 0 ? currentTrack - 1 : musicTracks.length - 1]}
+            src={musicFiles[currentTrack > 0 ? currentTrack - 1 : musicFiles.length - 1]}
           />
         </>
       )}
@@ -557,7 +557,7 @@ const BackgroundMusicPlayer = () => {
             
             <div className="space-y-4 overflow-y-auto max-h-[calc(90vh-120px)] pr-2">
 
-              {musicTracks.length > 0 ? (
+              {musicFiles.length > 0 ? (
                 <>
                   <button
                     onClick={togglePlay}
@@ -626,7 +626,7 @@ const BackgroundMusicPlayer = () => {
                   {showPlaylist && (
                     <div className="border-t border-gray-700 pt-4 animate-fade-in">
                       <div className="flex items-center justify-between mb-3">
-                        <h3 className="text-neon-blue font-semibold text-sm">Current Playlist ({musicTracks.length} tracks)</h3>
+                        <h3 className="text-neon-blue font-semibold text-sm">Current Playlist ({musicFiles.length} tracks)</h3>
                         <button
                           onClick={() => setShowPlaylist(false)}
                           className="text-gray-400 hover:text-white transition-colors text-sm"
@@ -635,7 +635,7 @@ const BackgroundMusicPlayer = () => {
                         </button>
                       </div>
                       <div className="max-h-48 overflow-y-auto space-y-1 pr-2">
-                        {musicTracks.map((track, index) => {
+                        {musicFiles.map((track, index) => {
                           const trackName = track.split('/').pop()?.replace('.mp3', '') || 'Unknown Track';
                           const isCurrentTrack = index === currentTrack;
                           
@@ -768,7 +768,7 @@ const BackgroundMusicPlayer = () => {
             </button>
           </div>
           
-          {musicTracks.length > 0 ? (
+          {musicFiles.length > 0 ? (
             <>
               {/* Compact track info */}
               <div className="bg-gray-800/30 rounded-lg p-1.5 mb-2 border border-gray-600/20">
