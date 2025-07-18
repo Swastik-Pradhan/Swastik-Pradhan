@@ -50,21 +50,21 @@ const ContactSection = () => {
         to_email: 'swastik5411@gmail.com',
         subject: `Portfolio Contact from ${data.name}`,
       };
-
+    
       const response = await emailjs.send(
         'service_kpjxtvg',
         'template_e55mvq4',
         templateParams,
         '_imi_OKEIErWcSidJ'
       );
-
+    
       if (response.status === 200) {
-        toast({
+    toast({
           title: "Message sent successfully! 🎉",
           description: "Thank you for reaching out. I'll get back to you soon!",
-        });
-        
-        // Reset form
+    });
+    
+    // Reset form
         reset();
       } else {
         throw new Error('Failed to send email');
@@ -147,9 +147,9 @@ const ContactSection = () => {
             <CardContent className="space-y-6">
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div className="space-y-2">
-                  <Input
+                <Input
                     {...register('name')}
-                    placeholder="Your Name"
+                  placeholder="Your Name"
                     className={`bg-background/50 border-neon-blue/30 focus:border-neon-blue ${
                       errors.name ? 'border-red-500' : ''
                     }`}
@@ -160,10 +160,10 @@ const ContactSection = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Input
+                <Input
                     {...register('email')}
-                    type="email"
-                    placeholder="Your Email"
+                  type="email"
+                  placeholder="Your Email"
                     className={`bg-background/50 border-neon-blue/30 focus:border-neon-blue ${
                       errors.email ? 'border-red-500' : ''
                     }`}
@@ -174,10 +174,10 @@ const ContactSection = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Textarea
+                <Textarea
                     {...register('message')}
-                    placeholder="Your Message"
-                    rows={5}
+                  placeholder="Your Message"
+                  rows={5}
                     className={`bg-background/50 border-neon-blue/30 focus:border-neon-blue resize-none ${
                       errors.message ? 'border-red-500' : ''
                     }`}
@@ -201,7 +201,7 @@ const ContactSection = () => {
                     ) : (
                       'Send Message'
                     )}
-                  </Button>
+                </Button>
                   
 
                 </div>
@@ -223,23 +223,23 @@ const ContactSection = () => {
                         target={info.href.startsWith('http') ? '_blank' : undefined}
                         rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                         className="flex items-center gap-3 text-gray-300 hover:text-neon-blue transition-colors flex-1"
-                      >
+                    >
                         {info.icon}
                         <span className="text-sm">{info.value}</span>
-                      </a>
+                    </a>
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => copyToClipboard(info.value, info.label)}
                         className="opacity-0 group-hover:opacity-100 transition-opacity"
-                      >
+                    >
                         {copiedField === info.label ? (
                           <Check className="h-4 w-4 text-green-400" />
                         ) : (
                           <Copy className="h-4 w-4" />
                         )}
                       </Button>
-                    </div>
+                  </div>
                   ))}
                 </div>
               </CardContent>
@@ -264,8 +264,8 @@ const ContactSection = () => {
                       >
                         {social.icon}
                         <span className="ml-2">{social.label}</span>
-                      </Button>
-                    </a>
+                    </Button>
+                  </a>
                   ))}
                 </div>
               </CardContent>

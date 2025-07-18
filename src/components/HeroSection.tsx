@@ -14,7 +14,7 @@ const HeroSection = () => {
   const handleDownloadResume = () => {
     // Create a link element
     const link = document.createElement('a');
-    link.href = '/resume.pdf';
+    link.href = `${import.meta.env.BASE_URL}resume.pdf`;
     link.download = 'SwastikPradhan_CV.pdf';
     link.target = '_blank';
     

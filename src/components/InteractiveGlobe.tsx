@@ -85,8 +85,8 @@ function LocationPin({ location, radius, onHover, onSecretFound, isSecret = fals
           }
         }
       } else {
-        meshRef.current.scale.setScalar(hovered ? 1.5 : 1);
-      }
+      meshRef.current.scale.setScalar(hovered ? 1.5 : 1);
+    }
     }
   });
 
@@ -166,7 +166,7 @@ function Earth() {
         (meshRef.current.material as THREE.MeshPhongMaterial).emissive = color.clone().multiplyScalar(0.3);
       } else {
         // Normal rotation and reset to blue color
-        meshRef.current.rotation.y += 0.001;
+      meshRef.current.rotation.y += 0.001;
         (meshRef.current.material as THREE.MeshPhongMaterial).color = new THREE.Color("#1e40af");
         (meshRef.current.material as THREE.MeshPhongMaterial).emissive = new THREE.Color("#0f172a");
         (meshRef.current.material as THREE.MeshPhongMaterial).emissiveIntensity = 0.1;
