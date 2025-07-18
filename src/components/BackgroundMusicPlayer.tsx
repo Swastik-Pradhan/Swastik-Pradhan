@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Play, Pause, Music, ExternalLink, Volume2, VolumeX, Headphones, Shuffle, SkipForward, SkipBack } from 'lucide-react';
+import { useMusic } from '@/contexts/MusicContext';
 
 const BackgroundMusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [showControls, setShowControls] = useState(false);
+  const { showControls, toggleControls } = useMusic();
   const [showPlayer, setShowPlayer] = useState(false);
   const [showMusicSection, setShowMusicSection] = useState(false);
   const [showPlaylist, setShowPlaylist] = useState(false);
@@ -85,7 +86,7 @@ const BackgroundMusicPlayer = () => {
     const handleKeyPress = (event: KeyboardEvent) => {
       if (event.ctrlKey && event.key === 'm') {
         event.preventDefault();
-        setShowControls(prev => !prev);
+        toggleControls();
       }
       // Double tap Ctrl to show/hide the actual player
       if (event.ctrlKey && event.key === 'p') {
@@ -107,7 +108,7 @@ const BackgroundMusicPlayer = () => {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [showMusicSection]);
+  }, [showMusicSection, toggleControls]);
 
   // Handle audio events with optimized performance
   useEffect(() => {
@@ -920,11 +921,15 @@ const BackgroundMusicPlayer = () => {
       )}
 
       {/* Secret indicator (subtle hint) */}
-      <div className="fixed bottom-4 right-4 z-40 opacity-20 hover:opacity-40 transition-opacity duration-300">
-        <div className="text-xs text-gray-400 font-mono">
-          Ctrl+M
-        </div>
-      </div>
+      <button
+        onClick={toggleControls}
+        className="fixed bottom-4 right-4 z-40 hover:opacity-60 transition-opacity duration-300 text-xs font-mono bg-transparent rounded-full px-3 py-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00f5ff] flex items-center justify-center"
+        style={{ cursor: 'pointer', boxShadow: '0 0 8px #00f5ff22', minHeight: '2rem', minWidth: '4rem' }}
+        title="Show/Hide Music Controls (Ctrl+M)"
+        aria-label="Show/Hide Music Controls (Ctrl+M)"
+      >
+        <span className="text-gray-400" style={{ opacity: 0.2 }}>Ctrl+M</span>
+      </button>
 
 
     </>
