@@ -120,7 +120,7 @@ const ContactSection = () => {
     {
       icon: <Linkedin className="h-5 w-5" />,
       label: 'LinkedIn',
-      href: 'https://linkedin.com/in/Swastik-Pradhan',
+      href: 'https://www.linkedin.com/in/swastik-pradhan09/',
       color: 'border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-gray-900'
     },
     {

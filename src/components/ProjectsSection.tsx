@@ -14,11 +14,11 @@ const ProjectsSection = () => {
       demo: "#"
     },
     {
-      title: "Real-Time Memory Allocation Tracker",
-      description: "Simulation tool for dynamic memory allocation algorithms (First Fit, Best Fit, Worst Fit) with real-time visualization and multi-threading support.",
+      title: "LEXORA – Document to Database Converter",
+      description: "Convert messy documents into structured databases. Upload text or files, extract tasks, deadlines, and entities, and export clean, editable tables.",
       image: "/placeholder.svg",
-      tags: ["Python", "Tkinter", "Threading", "OS Concepts"],
-      github: "https://github.com/Swastik-Pradhan",
+      tags: ["React", "Vite", "TypeScript", "NLP"],
+      github: "https://github.com/Swastik-Pradhan/LEXORA",
       demo: "#"
     },
     {
